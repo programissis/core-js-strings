@@ -118,7 +118,7 @@ function removeLeadingWhitespaces(value) {
 }
 
 /**
- * Removes only trailing whitespace characters from the string.                                     ошибка
+ * Removes only trailing whitespace characters from the string.
  *
  * @param {string} value - The input string to remove trailing whitespaces from.
  * @return {string} - The string with trailing whitespaces removed.
@@ -128,8 +128,11 @@ function removeLeadingWhitespaces(value) {
  *   removeTrailingWhitespaces('cat ') => 'cat'
  *   removeTrailingWhitespaces('\t\t\tHello, World! ') => '\t\t\tHello, World!'
  */
-function removeTrailingWhitespaces(/* value */) {
-  throw new Error('Not implemented');
+function removeTrailingWhitespaces(value) {
+  if (typeof value !== 'string') {
+    throw new Error('aaa');
+  }
+  return value.trimEnd();
 }
 
 /**
@@ -145,8 +148,14 @@ function removeTrailingWhitespaces(/* value */) {
  *   repeatString('', 3) => ''
  *   repeatString('abc', -2) => ''
  */
-function repeatString(/* str, times */) {
-  throw new Error('Not implemented');
+function repeatString(str, times) {
+  if (typeof str !== 'string' || typeof times !== 'number') {
+    throw new Error('Invalid parameters');
+  }
+  if (times <= 0) {
+    return '';
+  }
+  return str.repeat(times);
 }
 
 /**
