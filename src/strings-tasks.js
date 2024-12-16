@@ -221,7 +221,7 @@ function sumOfCodes(str) {
     return 0;
   }
   let sum = 0;
-  for (let i = 0; i < str.length; i++) {
+  for (let i = 0; i < str.length; i += 1) {
     sum += str.charCodeAt(i);
   }
   return sum;
@@ -364,9 +364,9 @@ function countVowels(str) {
   }
   const vowels = 'aeiouyAEIOUY';
   let count = 0;
-  for (let i = 0; i < str.length; i++) {
+  for (let i = 0; i < str.length; i += 1) {
     if (vowels.includes(str[i])) {
-      count++;
+      count += 1;
     }
   }
   return count;
@@ -411,16 +411,9 @@ function findLongestWord(sentence) {
     throw new Error('Parameter must be a string');
   }
 
-  const words = sentence.split(' ');
-  let longestWord = '';
-
-  for (const word of words) {
-    if (word.length > longestWord.length) {
-      longestWord = word;
-    }
-  }
-
-  return longestWord;
+  return sentence.split(' ').reduce((longestWord, currentWord) => {
+    return currentWord.length > longestWord.length ? currentWord : longestWord;
+  }, '');
 }
 
 /**
@@ -462,7 +455,7 @@ function invertCase(str) {
 
   let inverted = '';
 
-  for (let i = 0; i < str.length; i++) {
+  for (let i = 0; i < str.length; i += 1) {
     const char = str[i];
     if (char === char.toUpperCase()) {
       inverted += char.toLowerCase();
@@ -572,7 +565,7 @@ function encodeToRot13(str) {
     throw new Error('Parameter must be a string');
   }
 
-  return str.replace(/[A-Za-z]/g, function (c) {
+  return str.replace(/[A-Za-z]/g, function rotateCharacter(c) {
     return String.fromCharCode(
       c.charCodeAt(0) + (c.toLowerCase() < 'n' ? 13 : -13)
     );
