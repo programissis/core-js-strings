@@ -19,8 +19,11 @@
  *   getStringLength(null) => 0
  *   getStringLength(undefined) => 0
  */
-function getStringLength(/* value */) {
-  throw new Error('Not implemented');
+function getStringLength(value) {
+  if (typeof value !== 'string') {
+    return 0;
+  }
+  return value.length;
 }
 
 /**
@@ -37,8 +40,8 @@ function getStringLength(/* value */) {
  *   isString('test') => true
  *   isString(new String('test')) => true
  */
-function isString(/* value */) {
-  throw new Error('Not implemented');
+function isString(value) {
+  return typeof value === 'string' || value instanceof String;
 }
 
 /**
@@ -53,8 +56,11 @@ function isString(/* value */) {
  *   concatenateStrings('aa', '') => 'aa'.
  *   concatenateStrings('', 'bb') => 'bb'
  */
-function concatenateStrings(/* value1, value2 */) {
-  throw new Error('Not implemented');
+function concatenateStrings(value1, value2) {
+  if (typeof value1 !== 'string' || typeof value2 !== 'string') {
+    throw new Error('Both parameters must be strings');
+  }
+  return value1.concat(value2);
 }
 
 /**
@@ -68,8 +74,11 @@ function concatenateStrings(/* value1, value2 */) {
  *   getFirstChar('cat') => 'c'
  *   getFirstChar('') => ''
  */
-function getFirstChar(/* value */) {
-  throw new Error('Not implemented');
+function getFirstChar(value) {
+  if (typeof value !== 'string' || value.length === 0) {
+    return '';
+  }
+  return value.charAt(0);
 }
 
 /**
@@ -83,8 +92,11 @@ function getFirstChar(/* value */) {
  *   removeLeadingAndTrailingWhitespaces('cat ') => 'cat'
  *   removeLeadingAndTrailingWhitespaces('\t\t\tHello, World! ') => 'Hello, World!'
  */
-function removeLeadingAndTrailingWhitespaces(/* value */) {
-  throw new Error('Not implemented');
+function removeLeadingAndTrailingWhitespaces(value) {
+  if (typeof value !== 'string') {
+    throw new Error('Parameter must be a string');
+  }
+  return value.trim();
 }
 
 /**
@@ -98,12 +110,15 @@ function removeLeadingAndTrailingWhitespaces(/* value */) {
  *   removeLeadingWhitespaces('cat ') => 'cat '
  *   removeLeadingWhitespaces('\t\t\tHello, World! ') => 'Hello, World! '
  */
-function removeLeadingWhitespaces(/* value */) {
-  throw new Error('Not implemented');
+function removeLeadingWhitespaces(value) {
+  if (typeof value !== 'string') {
+    throw new Error('Parameter must be a string');
+  }
+  return value.replace(/^\s+/, '');
 }
 
 /**
- * Removes only trailing whitespace characters from the string.
+ * Removes only trailing whitespace characters from the string.                                     ошибка
  *
  * @param {string} value - The input string to remove trailing whitespaces from.
  * @return {string} - The string with trailing whitespaces removed.
