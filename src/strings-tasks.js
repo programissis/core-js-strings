@@ -110,11 +110,11 @@ function removeLeadingAndTrailingWhitespaces(value) {
  *   removeLeadingWhitespaces('cat ') => 'cat '
  *   removeLeadingWhitespaces('\t\t\tHello, World! ') => 'Hello, World! '
  */
-function removeLeadingWhitespaces(value) {
-  if (typeof value !== 'string') {
+function removeLeadingWhitespaces(str) {
+  if (typeof str !== 'string') {
     throw new Error('Parameter must be a string');
   }
-  return value.replace(/^\s+/, '');
+  return str.trimStart();
 }
 
 /**
@@ -339,7 +339,7 @@ function orderAlphabetically(str) {
  */
 function containsSubstring(str, substring) {
   if (typeof str !== 'string' || typeof substring !== 'string') {
-    throw new Error('Both parameters must be strings');
+    return false; // Если один из параметров не строка, возвращаем false
   }
   return str.includes(substring);
 }
